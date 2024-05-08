@@ -1,0 +1,29 @@
+.cell {
+    color:gray;
+    width: calc(11.11% - 5px);
+    aspect-ratio: 1 / 1;
+}
+
+#grid {
+    height: 750px;
+    aspect-ratio: 1 / 1;
+}
+
+#numbers {
+    height: 250px;
+    width: 250px;
+    bottom: 0;
+    right: 0;
+}
+
+.number {
+    width: calc(33.33% - 10px);
+    aspect-ratio: 1 / 1;
+    margin-bottom: 5px;
+}
+
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
