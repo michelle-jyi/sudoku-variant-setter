@@ -1,7 +1,37 @@
 .cell {
-    color:gray;
+    background-color:rgb(230,230,230);
     width: calc(11.11% - 5px);
+    font-size: 32px;
+    border: 1px solid black;
     aspect-ratio: 1 / 1;
+}
+
+.top {
+    border-top-width: 2px;
+}
+
+.bottom {
+    border-bottom-width: 2px;
+}
+
+.left {
+    border-left-width: 2px;
+}
+
+.right {
+    border-right-width: 2px;
+}
+
+.selected {
+    background-color: rgb(150, 150, 150);
+}
+
+.error {
+    background-color: rgb(248, 72, 72);
+}
+
+.error.selected {
+    background-color: rgb(161, 47, 47);
 }
 
 #grid {
@@ -15,6 +45,8 @@
     bottom: 0;
     right: 0;
 }
+
+
 
 .number {
     width: calc(33.33% - 10px);
