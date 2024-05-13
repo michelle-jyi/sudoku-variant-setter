@@ -99,21 +99,23 @@ function errorChecking() {
     let col = getCol(currentSelectedCell);
     let box = getBox(row, col);
     let error = false;
-    let number = JSON.parse(cells[row][col].dataset.cell).number;
-    let prev = JSON.parse(cells[row][col].dataset.cell).prev;
+    let currentObj = JSON.parse(cells[row][col].dataset.cell);
+    let number = currentObj.number;
+    let prev = currentObj.prev;
     for (let r = 0; r < 9; r++) {
         for (let c = 0; c < 9; c++) {
             if (r == row && c == col) continue;
             if (r == row || c == col || getBox(r, c) == box) {
                 let obj = JSON.parse(cells[r][c].dataset.cell);
                 if (cells[r][c].innerHTML == number) {
-                    error = true;
+                    currentObj.errorCount++;
                     cells[r][c].classList.add("error");
                     obj.errorCount++;
                     cells[r][c].dataset.cell = JSON.stringify(obj);
                 } else {
                     if (prev != 0 && cells[r][c].innerHTML == prev) {
                         obj.errorCount--;
+                        currentObj.errorCount--;
                         cells[r][c].dataset.cell = JSON.stringify(obj);
                         if (obj.errorCount == 0) {
                             cells[r][c].classList.remove("error");
@@ -123,11 +125,13 @@ function errorChecking() {
             }
         }
     }
-    if (error) {
+    if (currentObj.errorCount != 0) {
         cells[row][col].classList.add("error");
     } else {
         cells[row][col].classList.remove("error");
     }
+    cells[row][col].dataset.cell = JSON.stringify(currentObj);
+
 }
 
 function getRow(id) {
